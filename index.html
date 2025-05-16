@@ -1,31 +1,63 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/goit-js-hw-11/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
-    <script type="module" crossorigin src="/goit-js-hw-11/index.js"></script>
-    <link rel="modulepreload" crossorigin href="/goit-js-hw-11/assets/vendor-CrlV4O_2.js">
-    <link rel="stylesheet" crossorigin href="/goit-js-hw-11/assets/vendor-CWKLx11g.css">
-    <link rel="stylesheet" crossorigin href="/goit-js-hw-11/assets/index-CusIl4FB.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Мобільне меню</title>
+    <link rel="stylesheet" crossorigin href="/example/assets/index-D8ni2GUp.css">
   </head>
   <body>
-    <form class="form" id="search-form">
-      <label>
-        <input
-          type="text"
-          name="search-text"
-          placeholder="Search images..."
-          required
-        />
-      </label>
-      <button type="submit">Search</button>
-    </form>
+    <header id="header">
+      <a href="#" class="logo" id="logo-link">Логотип</a>
+      <button class="js-mobile-menu" aria-label="Відкрити меню">&#9776;</button>
+    </header>
 
-    <ul id="gallery" class="gallery"></ul>
-    <span id="loader" class="loader hidden"></span>
+    <div class="menu-overlay"></div>
+    <nav class="mobile-menu" aria-hidden="true">
+      <div class="menu-header">
+        <a href="#" class="logo" id="menu-logo" aria-label="На головну">
+          <!-- SVG логотип у меню -->
+         
+         <svg class="icon icon-Conten" width="106" height="30" ><use href="/example/assets/sprite-C63UEfkM.svg#icon-logo-lilac"></use></svg>
+        </a>
+        <button class="js-close-menu" aria-label="Закрити меню">
+          <!-- SVG кнопка закриття -->
+          <svg class="icon icon-x" width="24" height="24"><use href="/example/assets/sprite-C63UEfkM.svg#icon-Close"></use></svg>
+            
+          </svg>
+        </button>
+      </div>
+      <ul>
+        <li><a href="#artists">Artists</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+      </ul>
+    </nav>
+    <main>
+      <section
+        id="artists"
+        style="height: 100vh; padding: 20px; background: #f0f0f0"
+      >
+        <h2>Artists</h2>
+        <p>Content about artists...</p>
+      </section>
+      <section
+        id="about"
+        style="height: 100vh; padding: 20px; background: #d0f0d0"
+      >
+        <h2>About Us</h2>
+        <p>Information about us...</p>
+      </section>
+      <section
+        id="reviews"
+        style="height: 100vh; padding: 20px; background: #f0d0d0"
+      >
+        <h2>Reviews</h2>
+        <p>Customer reviews...</p>
+      </section>
+    </main>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.4.1/simple-lightbox.min.js"></script>
+    <script src="./main.js"></script>
   </body>
 </html>
