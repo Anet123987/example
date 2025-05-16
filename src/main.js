@@ -1,48 +1,42 @@
-import { fetchImages } from './js/pixabay-api.js';
-import { renderGallery, clearGallery, showLoader, hideLoader } from './js/render-functions.js';
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
+const menuToggleBtn = document.querySelector('.js-mobile-menu');
+const closeMenuBtn = document.querySelector('.js-close-menu');
+const mobileMenu = document.querySelector('.mobile-menu');
+const overlay = document.querySelector('.menu-overlay');
 
-const form = document.querySelector('#search-form');
-const gallery = document.querySelector('#gallery');
+// Открывает меню
+function openMobileMenu() {
+  mobileMenu.hidden = false;
+  mobileMenu.removeAttribute('inert');
+  mobileMenu.classList.add('is-open');
+  overlay.classList.add('is-active');
+  closeMenuBtn.focus(); // Фокус на кнопку закриття
+}
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const query = e.target.elements['search-text'].value.trim(); 
+// Закрывает меню
+function closeMobileMenu() {
+  mobileMenu.classList.remove('is-open');
+  overlay.classList.remove('is-active');
+  mobileMenu.setAttribute('inert', '');
+  mobileMenu.hidden = true;
+}
 
-  if (!query) return; 
+// Открытие по кнопке-бургеру
+menuToggleBtn?.addEventListener('click', openMobileMenu);
 
-  clearGallery(); 
-  showLoader();  
+// Закрытие по кнопке-кресту
+closeMenuBtn?.addEventListener('click', closeMobileMenu);
 
-  try {
-    const data = await fetchImages(query); 
+// Закрытие по клику на оверлей
+overlay?.addEventListener('click', closeMobileMenu);
 
-    if (data.hits.length === 0) { 
-      iziToast.warning({
-        title: 'Oops',
-        message: 'Sorry, there are no images matching your search query. Please try again!',
-        position: 'topRight',
-      });
-      hideLoader(); 
-      return;
-    }
-
-    renderGallery(data.hits); 
-    hideLoader(); 
-
-   
-    e.target.elements['search-text'].value = ''; 
-
-    
-    e.target.elements['search-text'].focus();
-
-  } catch (error) {
-    iziToast.error({
-      title: 'Error',
-      message: 'Failed to fetch images.',
-      position: 'topRight',
-    });
-    hideLoader(); 
+// Закрытие по Escape
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    closeMobileMenu();
   }
+});
+
+// Закрытие при переходе по якорю
+document.querySelectorAll('.mobile-menu a[href^="#"]').forEach(link => {
+  link.addEventListener('click', closeMobileMenu);
 });
