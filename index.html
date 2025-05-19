@@ -3,17 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Artist Search</title>
+    <link rel="stylesheet" href="styles.css" />
     <script type="module" crossorigin src="/example/index.js"></script>
     <link rel="modulepreload" crossorigin href="/example/assets/vendor-DSJL_ovD.js">
     <link rel="stylesheet" crossorigin href="/example/assets/vendor-DnveWo0P.css">
-    <link rel="stylesheet" crossorigin href="/example/assets/index-CBCVq4iM.css">
+    <link rel="stylesheet" crossorigin href="/example/assets/index-DZOzV8mc.css">
   </head>
   <body>
-    <input type="text" id="search-input" placeholder="Search artists..." />
-    <button id="search-btn">Search</button>
-    <ul class="artists-list"></ul>
-    <div class="pagination"></div>
+    <div class="container">
+      <!-- Левая колонка: форма поиска -->
+      <aside class="sidebar">
+        <form id="search-form" class="search-form">
+          <input
+            id="search-input"
+            class="search-input"
+            type="text"
+            placeholder="Search by artist name"
+            autocomplete="off"
+          />
+        </form>
+      </aside>
 
+      <!-- Правая часть: карточки артистов -->
+      <main class="main-content">
+        <ul class="artists-list"></ul>
+        <div class="pagination"></div>
+      </main>
+    </div>
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <button id="modal-close" class="modal-close" aria-label="Close modal">
+          &times;
+        </button>
+        <h2 id="modal-artist-name"></h2>
+        <p id="modal-artist-bio"></p>
+      </div>
+    </div>
   </body>
 </html>
