@@ -1,4 +1,4 @@
-const photo = 'https://cdn.acowebs.com/wp-content/uploads/2023/10/3acwebs-1-768x442.jpg'
+const photo = 'https://cdn.acowebs.com/wp-content/uploads/2023/10/3acwebs-1-768x442.jpg';
 
 export function createArtistsMarkup(arr) {
   return arr
@@ -8,6 +8,10 @@ export function createArtistsMarkup(arr) {
       const genresMarkup = uniqueGenres
         .map(genre => `<span class="artists-genre">${genre}</span>`)
         .join('');
+
+      // Ограничиваем описание первой строкой (до первого переноса строки или 150 символов)
+      let shortDescr = strBiographyEN ? strBiographyEN.split('\n')[0] : '';
+      if (shortDescr.length > 150) shortDescr = shortDescr.slice(0, 147) + '...';
 
       return `
         <li class="artists-item" style="max-width:472px; max-height:527px;">
@@ -25,7 +29,7 @@ export function createArtistsMarkup(arr) {
           <div class="artists-box-genres">${genresMarkup}</div>
           <div class="artists-content">
             <h4 class="artists-name">${strArtist}</h4>
-            <p class="artists-descr">${strBiographyEN}</p>
+            <p class="artists-descr">${shortDescr}</p>
             <button type="button" class="artists-learn-more-btn" aria-label="Learn more about ${strArtist}">
               Learn More
               <svg class="icon-caret-right" width="24" height="24">
