@@ -1,179 +1,268 @@
-:root {
-	--color-scheme-1-background: var(--color-neutral-darkest);
-	--color-neutral-darkest: #060307;
-	--color-scheme-1-border: var(--opacity-white-20);
-	--color-scheme-1-text: var(--color-white);
-	--color-neutral-lighter: #d9d9d9;
-	--color-white: #fff;
-	--color-neutral-lightest: #f2f2f2;
-	--color-neutral-light: #b4b3b4;
-	--color-neutral: #828183;
-	--color-neutral-dark: #504e51;
-	--color-neutral-darker: #1e1c1f;
-	--opacity-transparent: rgba(255, 255, 255, 0);
-	--color-scheme-1-foreground: var(--color-neutral-darkest);
-	--color-scheme-1-accent: var(--color-white);
-	--opacity-white-5: rgba(255, 255, 255, 0.05);
-	--opacity-white-10: rgba(255, 255, 255, 0.1);
-	--opacity-white-15: rgba(255, 255, 255, 0.15);
-	--opacity-white-20: rgba(255, 255, 255, 0.2);
-	--opacity-white-30: rgba(255, 255, 255, 0.3);
-	--opacity-white-40: rgba(255, 255, 255, 0.4);
-	--opacity-white-50: rgba(255, 255, 255, 0.5);
-	--opacity-white-60: rgba(255, 255, 255, 0.6);
-	--opacity-neutral-darkest-5: rgba(6, 3, 7, 0.05);
-	--opacity-neutral-darkest-10: rgba(6, 3, 7, 0.1);
-	--opacity-neutral-darkest-15: rgba(6, 3, 7, 0.15);
-	--opacity-neutral-darkest-20: rgba(6, 3, 7, 0.2);
-	--opacity-neutral-darkest-30: rgba(6, 3, 7, 0.3);
-	--opacity-neutral-darkest-40: rgba(6, 3, 7, 0.4);
-	--opacity-neutral-darkest-50: rgba(6, 3, 7, 0.5);
-	--opacity-neutral-darkest-60: rgba(6, 3, 7, 0.6);
-	--color-affair-lightest: #f1ecf4;
-	--color-affair-lighter: #e3d9e9;
-	--color-affair-light: #9f7ab2;
-	--color-affair: #764191;
-	--color-affair-dark: #5e3474;
-	--color-affair-darker: #2f1a3a;
-	--color-affair-darkest: #23132b;
-	--color-chateau-green-lightest: #ecf4ed;
-	--color-chateau-green-lighter: #d9eadc;
-	--color-chateau-green-light: #7ab686;
-	--color-chateau-green: #419853;
-	--color-chateau-green-dark: #347942;
-	--color-chateau-green-darker: #1a3c21;
-	--color-chateau-green-darkest: #132d18;
-	--color-scheme-2-text: var(--color-white);
-	--color-scheme-2-background: var(--color-neutral-darker);
-	--color-scheme-2-border: var(--opacity-white-20);
-	--color-scheme-2-accent: var(--color-white);
-	--color-scheme-2-foreground: var(--color-neutral-darker);
-	--color-scheme-3-text: var(--color-white);
-	--color-scheme-3-background: var(--color-affair-darkest);
-	--color-scheme-3-border: var(--opacity-white-20);
-	--color-scheme-3-accent: var(--color-white);
-	--color-scheme-3-foreground: var(--color-affair-darkest);
-	--color-error-red: #af0404;
-}
-:root {
-  --font-family: "IBM Plex Sans", sans-serif;
-  --second-family: "Epilogue", sans-serif;
-  --third-family: "Roboto", sans-serif;
-}
+/* --- Общие сбросы и базовые стили --- */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
-/* По умолчанию скрываем */
-.js-mobile-menu,
-.mobile-menu,
-.menu-overlay {
-  display: none;
+
+body {
+  background-color: #121212;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 20px;
 }
 
-/* Показываем только на мобильных (до 767px) */
-@media (max-width: 767px) {
-  .js-mobile-menu {
-    display: block;
-    font-size: 28px;
-    cursor: pointer;
-    border: none;
-    
-  }
+/* --- Список артистов --- */
+.artists-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 976px; /* 2 карточки по 472 + gap */
+  list-style: none;
+}
 
-  .menu-overlay {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(0,0,0,0.5);
-    z-index: 1000;
-  }
-  .menu-overlay.is-active {
-    display: block;
-  }
-
-  .mobile-menu {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw;
-    height: 100vh;
-    
-    padding: 20px;
-    z-index: 1001;
-    overflow-y: auto;
-  }
-  .mobile-menu.is-open {
-    display: block;
-  }
-
-  .menu-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 320px;
-    height: 51px;
-    padding-left: 24px;
-    padding-right: 20px;
-    margin-bottom: 52px;
-
-  }
-
-  .mobile-menu .logo {
-    font-weight: bold;
-    font-size: 24px;
-  }
-
-  .js-close-menu {
-    font-size: 28px;
-    cursor: pointer;
-    background:transparent;
-    border: none;
-  }
-
-  .mobile-menu ul {
-    list-style: none;
-    padding: 0;
-    
-  }
-  .mobile-menu li {
-  padding-bottom: 32px;
-  }
-  
-  
- 
-  .mobile-menu {
+/* --- Карточка артиста --- */
+.artists-item {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 472px;
+  max-height: 527px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background-color: #060307;;
-  font-family: var(--font-family);
-  font-weight: 500;
-  font-size: 26px;
-  line-height: 1.5;
-  color: var(--color-scheme-1-text);
-  
 }
 
-/* Стили для ссылок меню */
-.mobile-menu a {
-  color: var(--color-scheme-1-text);
-  text-decoration: none;
-    font-family: var(--font-family);
-  font-weight: 500;
-  font-size: 26px;
-  line-height: 1.5;
-  color: var(--color-scheme-1-text);
+/* --- Изображение --- */
+.artists-box-img {
+  flex-shrink: 0;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+}
+
+.artists-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* --- Жанры --- */
+.artists-box-genres {
   display: flex;
-align-items: center;
-justify-content: center;
-flex-direction: column;
-
-  
-
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 12px;
+  background-color: #292929;
 }
 
+.artists-genre {
+  color: white;
+  border: 1px solid white;
+  border-radius: 12px;
+  padding: 4px 10px;
+  font-size: 13px;
+  white-space: nowrap;
+}
 
+/* --- Контент внутри карточки --- */
+.artists-content {
+  padding: 16px 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.artists-name {
+  font-size: 22px;
+  margin: 0 0 12px;
+  font-weight: 700;
+}
+
+.artists-descr {
+  font-size: 14px;
+  flex-grow: 1;
+  margin: 0 0 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --- Кнопка Learn More --- */
+.artists-learn-more-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s ease;
+  align-self: flex-start;
+}
+
+.artists-learn-more-btn:hover {
+  color: #5a4fff;
+  text-decoration: underline;
+}
+
+.icon-caret-right {
+  fill: currentColor;
+  transition: transform 0.3s ease;
+}
+
+.artists-learn-more-btn:hover .icon-caret-right {
+  transform: translateX(4px);
+}
+
+/* --- Стили для инпута поиска --- */
+#search-input {
+  background-color: #1a1a1a;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  font-size: 16px;
+  border-radius: 4px;
+  outline: none;
+  width: 250px;
+  margin-right: 10px;
+}
+
+#search-input::placeholder {
+  color: #888;
+  font-style: italic;
+}
+
+/* --- Кнопка поиска --- */
+#search-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+#search-btn:hover {
+  background-color: #5a4fff;
+  color: white;
+}
+
+/* --- Пагинация --- */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  user-select: none;
+}
+
+.pagination button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  border-radius: 4px;
+}
+
+.pagination button:hover:not(:disabled) {
+  color: #5a4fff;
+  text-decoration: underline;
+}
+
+.pagination button.active {
+  font-weight: 700;
+  color: #5a4fff;
+  cursor: default;
+}
+
+.pagination button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.pagination span {
+  color: white;
+  font-size: 16px;
+  user-select: none;
+}
+
+/* --- Мобильная адаптивность --- */
+@media (max-width: 600px) {
+  .artists-list {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+  .artists-item {
+    max-width: 100%;
+    max-height: none;
+  }
+  #search-input {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+  #search-btn {
+    width: 100%;
+  }
+}
+.artists-descr {
+  font-size: 14px;
+  margin: 0 0 16px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* Стили для модального окна */
+.modal {
+  display: none; /* скрыто по умолчанию */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal.is-active {
+  display: flex;
+}
+
+.modal-content {
+  background-color: #222;
+  color: white;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.8);
+  position: relative;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
 }
