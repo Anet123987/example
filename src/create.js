@@ -1,4 +1,4 @@
-const photo = '/img/artists/file-not-found.jpg';
+const photo = 'https://cdn.acowebs.com/wp-content/uploads/2023/10/3acwebs-1-768x442.jpg'
 
 export function createArtistsMarkup(arr) {
   return arr

@@ -2,7 +2,10 @@ import './css/styles.css';
 import { getArtists } from './artist-api.js';
 import { createArtistsMarkup } from './create.js';
 
-const list = document.querySelector('.artists-list');
+caxios.get(url, {
+  params,
+  headers: { 'Cache-Control': 'no-cache' }
+});
 const pagination = document.querySelector('.pagination');
 const searchInput = document.querySelector('#search-input');
 const searchBtn = document.querySelector('#search-btn');
